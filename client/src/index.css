@@ -1,0 +1,25 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@layer base {
+  @font-face {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 100 900;
+    font-display: swap;
+    src: url(./Font/UcC73FwrK3iLTeHuS_fvQtMwCp50KnMa2JL7SUc.woff2) format('woff2');
+  }
+}
+
+
+.customSideBorder::before{
+   content: '';
+   position: absolute;
+   background:#efefef;
+   width: 2px;
+   height:20px;
+   right: 10px;
+   top:3px;
+}
