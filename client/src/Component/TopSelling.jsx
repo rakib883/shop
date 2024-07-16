@@ -19,13 +19,13 @@ function TopSelling({topSellData}) {
                     <div className="product grid md:grid-cols-2 grid-cols-1 gap-4">
                         {
                         topSellData.map((item)=>(
-                            <div key={item._id} className="main-area flex py-2 justify-center items-center bg-white">
-                                <div className="image w-[50%]">
+                            <div key={item._id} className="main-area md:flex py-2 justify-center items-center bg-white">
+                                <div className="image w-full md:w-[50%]">
                                     <Link to={`/product/${item?._id}`} className="image h-[200px] bg-red-800">
                                        <img className="h-full w-full" src={item.images[0]} />
                                     </Link >
                                 </div>
-                                <div className="des w-[50%] flex flex-col md:gap-4">
+                                <div className="des w-full md:w-[50%] mx-4 flex flex-col md:gap-4">
                                     <div className="rating flex gap-2">
                                     <FaRegStar className="text-[#ffbb38] cursor-pointer" />
                                     <FaRegStar className="text-[#ffbb38] cursor-pointer" />

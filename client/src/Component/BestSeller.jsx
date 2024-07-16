@@ -13,7 +13,7 @@ function BestSeller() {
     <div>
         <div className="content mx-8 ">
             <Title firstTitle="Best Seller"/>
-            <div className="seller grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-4 justify-center items-center">
+            <div className="seller grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-4 justify-center items-center">
               {
                 seller.map((item)=>
                  <div key={item.id} className="main flex items-center flex-col gap-2 ">

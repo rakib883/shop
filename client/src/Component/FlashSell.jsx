@@ -38,9 +38,9 @@ function FlashSell() {
                         Get Our <Link className=" underline text-red-500">Mobile App</Link> 
                        <br /> It’s Make easy for you life !
                     </h1>
-                    <div className="logo-area flex-col lg:flex-row gap-4">
-                        <img src="https://i.ibb.co/6gFSxgM/apple-store.png"/>
-                        <img src="https://i.ibb.co/bzgzCBy/play-store.png"/>
+                    <div className="logo-area flex-row md:flex gap-y-4   gap-4">
+                        <img className="" src="https://i.ibb.co/6gFSxgM/apple-store.png"/>
+                        <img className="mt-4 md:mt-0" src="https://i.ibb.co/bzgzCBy/play-store.png"/>
                     </div>
                     <div className="mobile flex justify-center items-center">
                         <img src="https://i.ibb.co/BVzTgLD/app-screen.png"/>

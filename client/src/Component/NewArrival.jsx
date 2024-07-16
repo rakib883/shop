@@ -47,7 +47,7 @@ function NewArrival() {
                       <Commet color="#32cd32" size="medium" text="" textColor="" />
                   </div>
                  :
-                 <div className="all-content gap-2 grid grid-cols-2  md:grid-cols-4 lg:grid-cols-4">
+                 <div className="all-content gap-2 grid grid-cols-1  md:grid-cols-4 lg:grid-cols-4">
                   {
                     arraval.map((item)=>
                        
@@ -87,7 +87,7 @@ function NewArrival() {
                                     <div className=" cursor-pointer w-full    ">
                                         <div className="button-area flex gap-4  text-md  py-[6px] items-center justify-center bg-[#ffa800] hover:bg-orange-700 duration-300">
                                             <p><BsMinecart /></p>
-                                            <p className=" font-sans font-semibold">Add To Cart</p> 
+                                            <p className=" font-sans font-semibold text-base">Add To Cart</p> 
                                         </div>
                                     </div>
                                 </div>

@@ -26,7 +26,7 @@ function WazWorld({ waZdata = [], bannerImage, linkItems = [],header,foter }) {
                         <h1 className=" font-sans font-semibold flex items-center">{foter}</h1>  
                     </div>
                 </div>
-                <div className="product w-[100%] md:w-[75%] grid md:grid-cols-2 lg:grid-cols-3 grid-cols-2  gap-4 ">
+                <div className="product w-[100%] md:w-[75%] grid md:grid-cols-2 lg:grid-cols-3 grid-cols-1  gap-4 ">
                       {
                         waZdata.map((item)=>(
                             <div key={item._id} className="all-c0ntent bg-white relative overflow-hidden group" >
