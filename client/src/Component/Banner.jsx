@@ -5,20 +5,22 @@ function Banner() {
   return (
     <div>
         <div className="main-area my-4">
-            <div className="content grid grid-rows-4 grid-flow-col gap-4 mx-8">
-                <div className="big-items row-span-4 col-span-9 bg-red-900 ">
-                    <div className="image h-full w-full">
+            <div className="content md:flex gap-4  mx-8">
+                <div className="big-items w-full md:w-[70%] ">
+                    <div className="image h-full ">
                         <img className="h-full w-full" src={bigBanner} alt="banner"/>
                     </div>
                 </div>
-                <div className="smal col-span-3 row-span-2 ">
-                    <div className="image h-full w-full">
-                        <img className="h-full w-full" src={firstsmall} alt="banner"/>
+                <div className="small mt-4 md:mt-0 w-full md:w-[30%] flex md:flex-col gap-4 ">
+                    <div className="smal ">
+                        <div className="image ">
+                            <img className="h-full w-full" src={firstsmall} alt="banner"/>
+                        </div>
                     </div>
-                </div>
-                <div className="small col-span-3 row-span-2 ">
-                    <div className="image  h-full w-full">
-                        <img className="h-full w-full" src={secendSmall} alt="banner"/>
+                    <div className="small  ">
+                        <div className="image  ">
+                            <img className="h-full w-full" src={secendSmall} alt="banner"/>
+                        </div>
                     </div>
                 </div>
             </div>

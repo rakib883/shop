@@ -13,6 +13,7 @@ import HadesPhoneAds from "../Component/HadesPhoneAds"
 import NewArrival from "../Component/NewArrival"
 import PopulerSell from "../Component/PopulerSell"
 import FoterDiscount from "../Component/FoterDiscount"
+import FoterOffer from "../Component/FoterOffer"
 
 function Home() {
 //  wazworld area start 
@@ -49,6 +50,7 @@ function Home() {
         <NewArrival/>
         <PopulerSell/>
         <FoterDiscount/>
+        <FoterOffer/>
     </div>
   )
 }

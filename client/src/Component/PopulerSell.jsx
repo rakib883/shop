@@ -13,7 +13,7 @@ function PopulerSell() {
         }
         arrvalData()
     },[])
-    console.log(newarraval)
+    
   return (
     <div>
         <div className="all-content mx-8">

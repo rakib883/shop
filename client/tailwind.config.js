@@ -8,7 +8,8 @@ export default {
     extend: {
       backgroundImage:{
           "offerImage":"url('./campaign-cover-countdown.jpg')",
-          "playStore":"url(./download-app-cover.png)"
+          "playStore":"url(./download-app-cover.png)",
+          "foterDiscount" : "url('https://i.ibb.co/C73f4h8/discount-banner-1.jpg')"
       },
       fontFamily: {
         'MainFont': [`"Inter", "sans-serif"`],

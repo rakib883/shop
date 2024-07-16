@@ -10,6 +10,8 @@ import {
 import App from './App';
 import NotFound from './Page/NotFound';
 import Home from './Page/Home';
+import Shop from './Page/Shop';
+import SingleProduct from './Page/SingleProduct';
 
 const router = createBrowserRouter([
   {
@@ -19,6 +21,18 @@ const router = createBrowserRouter([
           {
             path: "/",
             element:<Home/>,
+          },
+          {
+            path:"Shop",
+            element:<Shop/>
+         },
+         {
+          path:"product/:id",
+          element:<SingleProduct/>
+         },
+          {
+              path:"catagories/:id",
+              element:<Shop/>
           },
           {
             path:"*",

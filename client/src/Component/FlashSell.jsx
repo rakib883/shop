@@ -26,7 +26,7 @@ function FlashSell() {
                         </div>
                     </div>
                     <div className="wow mx-20 pb-40 my-10">
-                        <p className=" text-5xl font-semibold font-sans">Wow flash sell</p>
+                        <p className=" text-3xl md:text-3xl lg:text-5xl font-semibold font-sans">Wow flash sell</p>
                         <p className=" underline mt-8 cursor-pointer">Shop Now</p>
                     </div> 
                  </div> 
@@ -38,7 +38,7 @@ function FlashSell() {
                         Get Our <Link className=" underline text-red-500">Mobile App</Link> 
                        <br /> It’s Make easy for you life !
                     </h1>
-                    <div className="logo-area flex gap-4">
+                    <div className="logo-area flex md:flex-col lg:flex-row gap-4">
                         <img src="https://i.ibb.co/6gFSxgM/apple-store.png"/>
                         <img src="https://i.ibb.co/bzgzCBy/play-store.png"/>
                     </div>
