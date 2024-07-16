@@ -7,6 +7,7 @@ import { FaArrowsAlt } from "react-icons/fa";
 import { LuRefreshCw } from "react-icons/lu";
 import { FaRegHeart } from "react-icons/fa";
 import { BsMinecart } from "react-icons/bs";
+import { Link } from "react-router-dom";
 
 
 
@@ -52,9 +53,9 @@ function NewArrival() {
                        
                       <div key={item?._id} className="main-div bg-white relative  overflow-hidden ">
                            <div className="all-content group">
-                              <div className="image">
+                              <Link to={`/product/${item?._id}`} className="image">
                                 <img src={item.images[0]} />
-                              </div>
+                              </Link>
                               <div className="user-rating mt-6 flex text-[#ffbb38] gap-2 mx-4 my-4">
                                     <FaRegStar />
                                     <FaRegStar />

@@ -2,6 +2,7 @@
 import { FaRegStar } from "react-icons/fa";
 import PrizeFormat from "./PrizeFormat";
 import Title from "./Title";
+import { Link } from "react-router-dom";
 
 function TopSelling({topSellData}) {
  
@@ -20,9 +21,9 @@ function TopSelling({topSellData}) {
                         topSellData.map((item)=>(
                             <div key={item._id} className="main-area flex py-2 justify-center items-center bg-white">
                                 <div className="image w-[50%]">
-                                    <div className="image h-[200px] bg-red-800">
-                                    <img className="h-full w-full" src={item.images[0]} />
-                                    </div>
+                                    <Link to={`/product/${item?._id}`} className="image h-[200px] bg-red-800">
+                                       <img className="h-full w-full" src={item.images[0]} />
+                                    </Link >
                                 </div>
                                 <div className="des w-[50%] flex flex-col md:gap-4">
                                     <div className="rating flex gap-2">

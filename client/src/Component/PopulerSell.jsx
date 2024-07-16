@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import Title from "./Title"
 import PrizeFormat from "./PrizeFormat"
+import { Link } from "react-router-dom"
 
 function PopulerSell() {
     const [newarraval,setNewArraval] = useState([])
@@ -25,9 +26,9 @@ function PopulerSell() {
                     newarraval.slice(0,15).map((item)=>
                       <div key={item._id} className="main bg-white cursor-pointer ">
                           <div className="all-content flex justify-center items-center">
-                             <div className="image h-[100px] w-[100px]">
+                             <Link to={`/product/${item?._id}`} className="image h-[100px] w-[100px]">
                                 <img src={item?.images[0]}/>
-                             </div>
+                             </Link>
                              <div className="content">
                                 <h1 className=" font-sans font-semibold hover:text-green-900 cursor-pointer">{item?.name.substring(0,30)}</h1>
                                 <div className="prize-area flex gap-2 items-center">

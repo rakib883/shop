@@ -7,7 +7,7 @@ function FlashSell() {
         <div className="content mx-8 md:flex my-8 gap-4">
             <div className="offer md:w-[50%]">
                   <div className=" w-full bg-offerImage overflow-hidden">
-                     <div className="offer flex gap-4 justify-between mx-20 mt-20">
+                     <div className="offer  gap-4 grid grid-cols-2 md:grid-cols-4 mx-20 mt-20">
                         <div className="days flex flex-col justify-center items-center">
                         <div className="day w-[50px] h-[50px] rounded-full flex justify-center items-center bg-orange-300">0</div>
                         <p className=" font-sans text-lg font-semibold">Days</p>
@@ -25,8 +25,8 @@ function FlashSell() {
                         <p className=" font-sans text-lg font-semibold">sec</p>
                         </div>
                     </div>
-                    <div className="wow mx-20 pb-40 my-10">
-                        <p className=" text-3xl md:text-3xl lg:text-5xl font-semibold font-sans">Wow flash sell</p>
+                    <div className="wow md:mx-20 pb-40 my-10 text-center md:text-start">
+                        <p className=" text-3xl md:text-3xl  lg:text-5xl font-semibold font-sans">Wow flash sell</p>
                         <p className=" underline mt-8 cursor-pointer">Shop Now</p>
                     </div> 
                  </div> 
@@ -38,7 +38,7 @@ function FlashSell() {
                         Get Our <Link className=" underline text-red-500">Mobile App</Link> 
                        <br /> It’s Make easy for you life !
                     </h1>
-                    <div className="logo-area flex md:flex-col lg:flex-row gap-4">
+                    <div className="logo-area flex-col lg:flex-row gap-4">
                         <img src="https://i.ibb.co/6gFSxgM/apple-store.png"/>
                         <img src="https://i.ibb.co/bzgzCBy/play-store.png"/>
                     </div>
