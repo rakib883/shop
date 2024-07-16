@@ -39,7 +39,7 @@ function FlashSell() {
                        <br /> It’s Make easy for you life !
                     </h1>
                     <div className="logo-area flex-row md:flex gap-y-4   gap-4">
-                        <img className="" src="https://i.ibb.co/6gFSxgM/apple-store.png"/>
+                        <img className=" " src="https://i.ibb.co/6gFSxgM/apple-store.png"/>
                         <img className="mt-4 md:mt-0" src="https://i.ibb.co/bzgzCBy/play-store.png"/>
                     </div>
                     <div className="mobile flex justify-center items-center">

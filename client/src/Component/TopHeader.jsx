@@ -2,13 +2,13 @@
 function TopHeader() {
   return (
     <div className="border-b-[1px]">
-      <div className="all-content mx-10 flex justify-between py-[12px] text-[12px] font-MainFont font-semibold ">
+      <div className="all-content mx-2  md:mx-10 flex justify-between py-[12px] text-[12px] font-MainFont font-semibold ">
           <div className="  flex items-center gap-4">
              <p>Account</p>
              <p>Trac Order</p>
              <p>Support</p>
           </div>
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-4 hidden md:block">
             <p>United state</p>
             <p>USD</p>
             <p>Bangla</p>

@@ -148,13 +148,13 @@ function Shop() {
                  <div className="loader flex justify-center items-center h-screen">
                      <Commet color="#32cd32" size="medium" text="" textColor="" />
                  </div> :
-                  <div className="all-item grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2">
+                  <div className="all-item grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-2">
                      {
                         shopData.map((item)=>
                          <div key={item._id} className="all-c0ntent bg-white relative overflow-hidden group" >
-                                <div className="image">
+                                <Link to={`/product/${item?._id}`} className="image">
                                     <img src={item?.images[0]}/>
-                                </div>
+                                </Link>
                                 <div className="user-rating mt-6 flex text-[#ffbb38] gap-2 mx-4 my-4">
                                     <FaRegStar />
                                     <FaRegStar />
