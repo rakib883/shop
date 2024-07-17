@@ -102,7 +102,7 @@ function Shop() {
             <div className="search-area hidden md:block w-[25%] bg-white">
                 <div className="item">
                     <div className="title p-6">
-                      <FilterTitle title="Product categories"/>
+                      <FilterTitle className="text-[20px]" title="Product categories"/>
                     </div>
                     <div className="catagory-title flex flex-col gap-4">
                         {

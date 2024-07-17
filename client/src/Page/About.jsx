@@ -15,7 +15,7 @@ function About() {
                 <div className="image w-full md:w-[50%]">
                     <img src="https://i.ibb.co/tmh2NMr/about-banner.png" alt="" />
                 </div>
-                <div className="text w-full md:w-[50%]">
+                <div className="text w-full mt-2 md:mt-0 md:w-[50%]">
                     <div className="title">
                       <FilterTitle className="text-[18px] font-sans" title="What is e-commerce business?" />
                     </div>
