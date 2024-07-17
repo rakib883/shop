@@ -55,7 +55,7 @@ function MainHeader() {
                 <div className="image-area">
                   <FaBarsStaggered onClick={()=>setCatagoryHandeler(true)} className=" block  md:hidden text-xl cursor-pointer" />
                   {/* mobile menu area start */}
-                   <div className={`mobile-menu ${ catagoryHandeler ? "left-0 duration-300" :"left-[-400px] duration-300" }  bg-white w-[80%] shadow-xl absolute top-0 shadow-xl md:hidden z-50`}>
+                   <div className={`mobile-menu ${ catagoryHandeler ? "left-0 duration-300" :"left-[-600px] duration-300" }  bg-white w-[80%] shadow-xl absolute top-0 shadow-xl md:hidden z-50`}>
                       <div className="main-items mx-4">
                           <div className="header flex justify-between items-center my-4">
 

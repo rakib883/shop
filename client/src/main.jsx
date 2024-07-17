@@ -12,6 +12,7 @@ import NotFound from './Page/NotFound';
 import Home from './Page/Home';
 import Shop from './Page/Shop';
 import SingleProduct from './Page/SingleProduct';
+import About from './Page/About';
 
 const router = createBrowserRouter([
   {
@@ -25,6 +26,10 @@ const router = createBrowserRouter([
           {
             path:"Shop",
             element:<Shop/>
+         },
+         {
+          path:"about",
+          element:<About/>
          },
          {
           path:"product/:id",

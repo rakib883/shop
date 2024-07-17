@@ -8,7 +8,7 @@ function TopHeader() {
              <p>Trac Order</p>
              <p>Support</p>
           </div>
-          <div className="flex items-center gap-4 hidden md:block">
+          <div className=" items-center gap-4 hidden md:inline-flex">
             <p>United state</p>
             <p>USD</p>
             <p>Bangla</p>
