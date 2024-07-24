@@ -11,6 +11,9 @@ import { FaRegUser } from "react-icons/fa6";
  import { FaRegHeart } from "react-icons/fa";
 import { useEffect, useState } from "react";
 import { FaRegUserCircle } from "react-icons/fa";
+import FilterTitle from "../UI/FilterTitle";
+import { PiSignInFill } from "react-icons/pi";
+import { motion } from "framer-motion"
 
 
 function MainHeader() {
@@ -48,9 +51,77 @@ function MainHeader() {
   // mobile menu click handeler start
      const [catagoryHandeler,setCatagoryHandeler] = useState(false)
   // mobile menu click handeler end
+
+  // user profile area start
+   const [userArea,setUserArea] = useState(false)
+  // user profile area end
   return (
-    <div>
-        <div className="main-content mx-8 flex items-center py-6">
+    <div className="bg-white sticky top-0 z-50 shadow-xl">
+          
+
+
+          { 
+           userArea &&
+          <div className="center0popup   absolute top-0 w-full h-screen z-40">
+              <div className="main-items  max-w-xl mx-auto h-screen flex flex-col gap-y-4 justify-center items-center">
+                  <motion.div
+                       initial={{ y: "100%" }}
+                       animate={{ y: userArea ? "0%" : "100%" }}
+                       transition={{ duration: .5, ease: "easeInOut" }}
+                   className={` bg-indigo-500   p-4 w-full flex gap-4 `}>
+
+
+
+                    
+                    <div onClick={()=>setUserArea(false)} className="xmark absolute top-[-15px] right-[-10px] cursor-pointer bg-white rounded-full">
+                        <HiOutlineXMark className=" text-2xl" />
+                    </div>
+                    <div className="image-area w-[50%]">
+                      <div className="image">
+                         <img src="https://i.ibb.co/VVTqgX4/Screenshot-2024-07-24-172143.png" alt="" />
+                      </div>
+                    </div>
+                    <div className="from w-[50%] flex justify-center items-center">
+                       <div className="all-content my-4">
+                           <div className="title flex justify-center items-center">
+                              <FilterTitle className="text-white" title="Wellcome to our Shop"/>
+                           </div>
+                           <div className="input-area w-full flex flex-col gap-2 my-2">
+                              <div className="email w-full">
+                                  <input type="text" placeholder="Inter your email" className="px-2 outline-none border-none rounded-md p-1 w-full" />
+                              </div>
+                              <div className="password">
+                                <input type="text" placeholder="Inter your password" className=" px-2 outline-none border-none p-1 rounded-md w-full" />
+                              </div>
+                              <div className="check text-white text-[12px] flex justify-between">
+                                  <div className="check flex gap-2 items-center cursor-pointer">
+                                    <input type="checkbox" name="" id="" className=" cursor-pointer" /> <h1>Remember Me</h1>
+                                  </div>
+                                  <div className="forget">
+                                     <h1 className=" font-sans">Forget Password ?</h1>
+                                  </div>
+                              </div>
+                              <div className="button flex justify-center items-center font-sans">
+                                <button className="flex items-center rounded-md bg-white text-[16px] px-4 py-2"> Sign in <PiSignInFill className=" mt-1 text-2xl" /></button>
+                              </div>
+                              <div className="register text-[12px] font-sans">You have dont account / <span className="text-white cursor-pointer hover:text-indigo-900">Register now</span>  </div>
+                           </div>
+                       </div>
+                    </div>
+                  </motion.div>
+              </div>
+          </div>
+          }
+          
+ 
+
+
+
+
+
+
+
+        <div className="main-content mx-8 flex  items-center py-6">
             <div className="logo-area w-[30%]">
                 <div className="image-area">
                   <FaBarsStaggered onClick={()=>setCatagoryHandeler(true)} className=" block  md:hidden text-xl cursor-pointer" />
@@ -72,13 +143,16 @@ function MainHeader() {
                                       <p className=" text-base ">10</p>
                                     </div>
                                 </div>
-                                <div className="user cursor-pointer">
+                                <div onClick={()=>{setUserArea(true),setCatagoryHandeler(false) }} className="user cursor-pointer">
                                    <FaRegUserCircle className=" text-2xl" />
                                 </div>
                             </div>
 
 
-                            <div onClick={()=>setCatagoryHandeler(false)} className="cross-icon bg-red-600 cursor-pointer rounded-full h-8 w-8 flex justify-center items-center">
+                            <div onClick={()=>{
+                                   setCatagoryHandeler(false) 
+    
+                                  }} className="cross-icon bg-red-600 cursor-pointer rounded-full h-8 w-8 flex justify-center items-center">
                                <HiOutlineXMark className=" text-2xl" />
                             </div>
                           </div>
@@ -139,6 +213,7 @@ function MainHeader() {
 
                       </div>
                    </div>
+
                    {/* mobile menu are end */}
                    <Link className="hidden md:block" to="/">
                      <img className="h-10 w-40" src={logog} />
@@ -153,7 +228,7 @@ function MainHeader() {
                 {/* mobile items end */}
                 <div className="all-content md:flex md:justify-between justify-center items-center border hidden md:block    ">
                      <div className="w-[50%] relative customSideBorder">
-                        <input className=" lg:w-[80%]  px-2 outline-none border-none bg-[#f8f8f8]" type="text" placeholder="Search" />
+                        <input className=" lg:w-[80%]  px-2 outline-none border-none bg-white" type="text" placeholder="Search" />
                      </div>
                      <div className="dropdown w-[40%] cursor-pointer hidden lg:block ">
                        <p>Select Catagory</p>
@@ -178,7 +253,7 @@ function MainHeader() {
                          <LiaShoppingBagSolid className="text-2xl" />
                          <p className=" absolute top-[-10px] right-[-10px] flex justify-center items-center bg-[#ffbb38] rounded-full w-5 h-5">0</p>
                     </div>
-                    <div className="user cursor-pointer relative hidden md:block">
+                    <div onClick={()=>setUserArea(true)} className="user cursor-pointer relative hidden md:block">
                          <FaRegUser className="text-2xl" />
                     </div>
                    
