@@ -14,6 +14,8 @@ import { FaRegUserCircle } from "react-icons/fa";
 import FilterTitle from "../UI/FilterTitle";
 import { PiSignInFill } from "react-icons/pi";
 import { motion } from "framer-motion"
+import { FaGoogle } from "react-icons/fa";
+import { FaFacebookF } from "react-icons/fa6";
 
 
 function MainHeader() {
@@ -55,6 +57,10 @@ function MainHeader() {
   // user profile area start
    const [userArea,setUserArea] = useState(false)
   // user profile area end
+
+  // register handeler area start
+  const [registerHandeler,setRegisterHandeler] = useState(true)
+  // regoster handeler area end
   return (
     <div className="bg-white sticky top-0 z-50 shadow-xl">
           
@@ -63,12 +69,12 @@ function MainHeader() {
           { 
            userArea &&
           <div className="center0popup   absolute top-0 w-full h-screen z-40">
-              <div className="main-items  max-w-xl mx-auto h-screen flex flex-col gap-y-4 justify-center items-center">
+              <div className="main-items max-w-lg  md:max-w-xl mx-auto h-screen flex flex-col gap-y-4 justify-center items-center">
                   <motion.div
                        initial={{ y: "100%" }}
                        animate={{ y: userArea ? "0%" : "100%" }}
                        transition={{ duration: .5, ease: "easeInOut" }}
-                   className={` bg-indigo-500   p-4 w-full flex gap-4 `}>
+                   className={` bg-indigo-500   p-4 w-full md:flex items-center gap-4 `}>
 
 
 
@@ -76,12 +82,14 @@ function MainHeader() {
                     <div onClick={()=>setUserArea(false)} className="xmark absolute top-[-15px] right-[-10px] cursor-pointer bg-white rounded-full">
                         <HiOutlineXMark className=" text-2xl" />
                     </div>
-                    <div className="image-area w-[50%]">
+                    <div className="image-area md:w-[50%] hidden md:block">
                       <div className="image">
-                         <img src="https://i.ibb.co/VVTqgX4/Screenshot-2024-07-24-172143.png" alt="" />
+                         <img className="h-full w-full " src="https://i.ibb.co/VVTqgX4/Screenshot-2024-07-24-172143.png" alt="" />
                       </div>
                     </div>
-                    <div className="from w-[50%] flex justify-center items-center">
+                    {
+                      registerHandeler ?
+                      <div className="from w-full  md:w-[50%] flex justify-center items-center">
                        <div className="all-content my-4">
                            <div className="title flex justify-center items-center">
                               <FilterTitle className="text-white" title="Wellcome to our Shop"/>
@@ -104,10 +112,62 @@ function MainHeader() {
                               <div className="button flex justify-center items-center font-sans">
                                 <button className="flex items-center rounded-md bg-white text-[16px] px-4 py-2"> Sign in <PiSignInFill className=" mt-1 text-2xl" /></button>
                               </div>
-                              <div className="register text-[12px] font-sans">You have dont account / <span className="text-white cursor-pointer hover:text-indigo-900">Register now</span>  </div>
+                              <div className="register text-[12px] font-sans">You have dont account / <span onClick={()=>setRegisterHandeler(false)} className="text-white cursor-pointer hover:text-indigo-900">Register now</span>  </div>
                            </div>
                        </div>
                     </div>
+                    :
+                    <div className="register md:w-[50%] ">
+                        <div className="title flex justify-center items-center text-center w-full">
+                          <FilterTitle className="text-white" title="Register now"/>
+                        </div>
+                            <div className="main">
+                              <div className="register">
+                                <div className="email">
+                                  <h1 className=" mx-1 font-sans text-white">Email</h1>
+                                  <div className="input-area my-1">
+                                    <input className=" w-full outline-none border-none p-1 px-2 rounded-md" type="text" placeholder="Inter your email" />
+                                  </div>
+                              </div>
+                              <div className="email">
+                                  <h1 className=" mx-1 font-sans text-white">Password</h1>
+                                  <div className="input-area my-1">
+                                    <input className=" w-full outline-none border-none p-1 px-2 rounded-md" type="text" placeholder="Inter password" />
+                                  </div>
+                              </div>
+                              <div className="email">
+                                  <h1 className=" mx-1 font-sans text-white">Retype Password</h1>
+                                  <div className="input-area my-1">
+                                    <input className=" w-full outline-none border-none p-1 px-2 rounded-md" type="text" placeholder="Inter retype password" />
+                                  </div>
+                              </div>
+                              <div className="create-account bg-indigo-600 rounded-md my-2 text-white text-center">
+                                <button className="py-1 font-sans ">Create account</button>
+                              </div>
+                            </div>
+                            <div className="login text-center cursor-pointer text-white">
+                                <h1 onClick={()=>setRegisterHandeler(true)} className=" hover:text-indigo-800">Login now</h1>
+                             </div>
+                            <div className="social-area">
+                               <div className="seperator flex items-center gap-2">
+                                   <div className="border w-full h-[1px] bg-black"></div>
+                                   <div className="text">OR</div>
+                                   <div className="border w-full h-[1px] bg-black"></div>
+                               </div>
+                               <div className="social flex justify-center items-center my-4 gap-4 text-white">
+                                   <div className="facebook cursor-pointer bg-black rounded-full h-8 w-8 flex justify-center items-center">
+                                     <FaGoogle />
+                                   </div>
+                                   <div className="facebook cursor-pointer bg-black rounded-full h-8 w-8 flex justify-center items-center">
+                                     <FaFacebookF />
+                                   </div>
+                                    
+                               </div>
+                            </div>
+                         </div>
+                      </div>
+
+                    } 
                   </motion.div>
               </div>
           </div>
