@@ -114,7 +114,7 @@ function SingleProduct() {
                        <FaRegHeart className=" text-xl" />
                      </div>
                      <div className="add-cart w-full md:w-[60%] bg-black ">
-                        <button className=" text-center w-full  py-2 text-white">Add To Cart</button>
+                        <button className=" text-center  w-full  py-2 text-white">Add To Cart</button>
                      </div>
                   </div>
                   <div className="review-area">

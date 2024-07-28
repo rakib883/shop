@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import logog from "../assets/logo.svg"
 import { FaRegUser } from "react-icons/fa6";
  import { LiaShoppingBagSolid } from "react-icons/lia";
@@ -16,6 +16,16 @@ import { PiSignInFill } from "react-icons/pi";
 import { motion } from "framer-motion"
 import { FaGoogle } from "react-icons/fa";
 import { FaFacebookF } from "react-icons/fa6";
+import app from "../Firebase/Firebase";
+import { signInWithPopup } from "firebase/auth";
+import { GoogleAuthProvider } from "firebase/auth";
+import { getAuth } from "firebase/auth";
+import { useDispatch, useSelector } from "react-redux";
+import { addUser, singleItemRemove } from "../Redux/Slice";
+import PrizeFormat from "./PrizeFormat";
+
+
+
 
 
 function MainHeader() {
@@ -61,11 +71,78 @@ function MainHeader() {
   // register handeler area start
   const [registerHandeler,setRegisterHandeler] = useState(true)
   // regoster handeler area end
+
+
+// user auth area start
+const auth = getAuth(app);
+const googleProvider = new GoogleAuthProvider();
+const [user,setUser] = useState(false)
+const navagete = useNavigate("")
+const googleHandler = () => {
+  setUserArea(false)
+  signInWithPopup(auth, googleProvider)
+    .then((result) => {
+      
+      console.log(result.user)
+      
+      setUser(true)
+      dispatch(addUser({
+        name:result?.user?.displayName,
+        email:result?.user?.email,
+        image:result?.user?.photoURL
+      }))
+
+      setTimeout(()=>{
+        navagete("/shop")
+      },1500)
+     
+      // Handle user data, e.g., save it to state or local storage
+    })
+    .catch((error) => {
+      console.error("Error during sign-in with Google:", error);
+      // Handle error appropriately
+    });
+};
+
+
+
+
+// user auth area end
+  const dispatch = useDispatch()
+  const profileData = useSelector((state)=>state?.userData?.user)
+
+  // user area end
+
+
+
+  {/* addcart area start */}
+   const cartSelector = useSelector((state)=>state?.userData?.addCartData)
+  
+   const [totalPrice,setTotalPrice] = useState()
+   cartSelector.map((item)=>item?.price )
+    useEffect(()=>{
+      let price = 0
+      cartSelector.map((item)=>{
+         price += item?.price * item?.quantity
+      })
+      setTotalPrice(price)
+    },[cartSelector])
+
+    const singleCartDataRemove = useDispatch()
+
+
+
+    const[cartItem,setCartItem] = useState(false)
+  {/* add cart area end */}
+  
+
+
+  // favorite area start
+  const favoriteData = useSelector((item)=>item?.userData?.favorite)
+  // favorite area end
   return (
     <div className="bg-white sticky top-0 z-50 shadow-xl">
-          
-
-
+       {/* login system are start */}
           { 
            userArea &&
           <div className="center0popup   absolute top-0 w-full h-screen z-40">
@@ -74,12 +151,12 @@ function MainHeader() {
                        initial={{ y: "100%" }}
                        animate={{ y: userArea ? "0%" : "100%" }}
                        transition={{ duration: .5, ease: "easeInOut" }}
-                   className={` bg-indigo-500   p-4 w-full md:flex items-center gap-4 `}>
+                       className={` bg-indigo-500   p-4 w-full md:flex items-center gap-4 `}>
 
 
 
                     
-                    <div onClick={()=>setUserArea(false)} className="xmark absolute top-[-15px] right-[-10px] cursor-pointer bg-white rounded-full">
+                    <div onClick={()=>setUserArea(false)} className="xmark absolute top-[-15px] right-[-10px] cursor-pointer bg-white rounded-full drop-shadow-4xl">
                         <HiOutlineXMark className=" text-2xl" />
                     </div>
                     <div className="image-area md:w-[50%] hidden md:block">
@@ -155,7 +232,7 @@ function MainHeader() {
                                    <div className="border w-full h-[1px] bg-black"></div>
                                </div>
                                <div className="social flex justify-center items-center my-4 gap-4 text-white">
-                                   <div className="facebook cursor-pointer bg-black rounded-full h-8 w-8 flex justify-center items-center">
+                                   <div onClick={googleHandler} className="facebook cursor-pointer bg-black rounded-full h-8 w-8 flex justify-center items-center">
                                      <FaGoogle />
                                    </div>
                                    <div className="facebook cursor-pointer bg-black rounded-full h-8 w-8 flex justify-center items-center">
@@ -172,10 +249,11 @@ function MainHeader() {
               </div>
           </div>
           }
+          {/* login system area end */}
           
  
 
-
+      
 
 
 
@@ -303,21 +381,106 @@ function MainHeader() {
                 <div className="content flex gap-6 items-center">
                    <div className="user cursor-pointer relative hidden md:block">
                          <LuRefreshCw className="text-2xl" />
-                         <p className=" absolute top-[-10px] right-[-10px] flex justify-center items-center bg-[#ffbb38] rounded-full w-5 h-5">0</p>
+                         <p className=" absolute top-[-10px] right-[-10px] flex justify-center items-center bg-[#ffbb38] rounded-full w-5 h-5">{favoriteData?.length}</p>
                     </div>
-                   <div className="user cursor-pointer relative hidden md:block">
+                   <Link to="/wishlist" className="user cursor-pointer relative hidden md:block">
                          <CiHeart className="text-2xl" />
-                         <p className=" absolute top-[-10px] right-[-10px] flex justify-center items-center bg-[#ffbb38] rounded-full w-5 h-5">0</p>
-                    </div>
+                         <p className=" absolute top-[-10px] right-[-10px] flex justify-center items-center bg-[#ffbb38] rounded-full w-5 h-5">{favoriteData?.length}</p>
+                    </Link>
+                    
+                    {/* desktop cart area start */}
                     <div className="user cursor-pointer relative ">
-                         <LiaShoppingBagSolid className="text-2xl" />
-                         <p className=" absolute top-[-10px] right-[-10px] flex justify-center items-center bg-[#ffbb38] rounded-full w-5 h-5">0</p>
+
+                       <div onMouseEnter={()=>setCartItem(true)} onMouseLeave={()=>setCartItem(false)} className="main-content">
+                            <LiaShoppingBagSolid className="text-2xl" />
+                            <p className=" absolute top-[-10px] right-[-10px] flex justify-center items-center bg-[#ffbb38] rounded-full w-5 h-5">{cartSelector?.length}</p>
+                        </div>
+                         {
+                          cartItem &&
+                         <motion.div
+                            initial={{ x: "100%" }}
+                            animate={{ x: userArea ? "100%" : "10%" }}
+                            transition={{ duration: .5, ease: "easeInOut" }}
+
+
+                            onMouseEnter={()=>setCartItem(true)} onMouseLeave={()=>setCartItem(false)}
+                            className="hidenItems bg-white drop-shadow-2xl absolute w-[300px] snap-none right-[-15px] mt-0">
+                           <div className="top-border bg-[#ffbb38] h-[2px]"></div>
+                           {/* main-content-area start */}
+                           <div className="content mx-2 py-2">
+                              <div className="cartitems  max-h-[200px] overflow-auto">
+                                 {
+                                   cartSelector.map((item)=>
+                                      <div key={item.id} className="main-item flex justify-between items-center border-b-orange-400">
+                                           <div className="image flex items-center">
+                                              <div className="image w-20 h-20">
+                                                  <img src={item?.image[0]} alt="" />
+                                              </div>
+                                              <div className="title">
+                                                  <h1>{item?.title.substring(0,20)}</h1>
+                                                  <p className="text-red-800"><PrizeFormat price={item?.price}/></p>
+                                              </div>
+                                           </div>
+                                           <div 
+                                             onClick={()=>singleCartDataRemove(singleItemRemove({
+                                              id:item?.id
+                                             }))}
+                                           className="cross mx-4 ">
+                                             <HiOutlineXMark className=" text-2xl" />
+                                           </div>
+                                      </div>
+                                  
+                                    )
+                                 }
+                              </div>
+                              
+                                <div className="cart-button">
+                                  {
+                                    cartSelector.length > 0 ?
+                                    <div className="main mx-8">
+                                        <div className="title flex py-4 justify-between font-sans font-semibold">
+                                          <h1>Total</h1>
+                                          <h1>{totalPrice}</h1>
+                                        </div>
+                                        <div className="button flex gap-2 flex-col my-4">
+                                          <button className=" bg-gray-400 font-semibold text-white font-sans py-2">View Cart</button> 
+                                          <button  className=" bg-[#ffbb38] py-2 font-sans text-black font-semibold">Check Out Now</button>
+                                        </div>
+                                        <p className=" text-center py-2 font-sans">Get Return 30 days</p>
+                                    </div>:
+                                    <div className="nodata text-center font-sans text-lg font-semibold">
+                                       You Cart is Empety
+                                    </div>
+                                 }
+                                </div>
+                           </div>
+                           {/* main content are end */}
+                         </motion.div>
+                         }
                     </div>
-                    <div onClick={()=>setUserArea(true)} className="user cursor-pointer relative hidden md:block">
-                         <FaRegUser className="text-2xl" />
+                    {/* desktop cart are end */}
+
+
+
+
+                    
+                    <div className="profile cursor-pointer">
+                      {
+                        user ?
+                        <div className="user-items">
+                          <div className="image h-10 w-10">
+                              <img className=" rounded-full" src={profileData?.image}  alt="profile" />
+                          </div>
+                        </div> 
+                          :
+                          <div 
+                            onClick={() => setUserArea(true)} 
+                            className="user cursor-pointer relative hidden md:block"
+                          >
+                            <FaRegUser className="text-2xl" />
+                          </div>
+                      }
                     </div>
-                   
-                   
                 </div>
             </div>
         </div>

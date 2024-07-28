@@ -14,6 +14,9 @@ import Shop from './Page/Shop';
 import SingleProduct from './Page/SingleProduct';
 import About from './Page/About';
 import Contact from './Page/Contact';
+import { Provider } from 'react-redux';
+import Store from './Redux/Store';
+import Wishlist from './Page/wishlist';
 
 const router = createBrowserRouter([
   {
@@ -45,6 +48,10 @@ const router = createBrowserRouter([
               element:<Shop/>
           },
           {
+            path:"/wishlist",
+            element:<Wishlist/>
+          },
+          {
             path:"*",
             element:<NotFound/>
           }
@@ -55,6 +62,8 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-     <RouterProvider router={router} />
+     <Provider store={Store}>
+        <RouterProvider router={router} />
+     </Provider>
   </React.StrictMode>,
 )

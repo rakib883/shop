@@ -11,6 +11,11 @@ import { FaRegHeart } from "react-icons/fa";
 import { LuRefreshCw } from "react-icons/lu";
 import { BsMinecart } from "react-icons/bs";
 import { Commet } from "react-loading-indicators"
+import { useDispatch, useSelector } from "react-redux"
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { addToCart, productIncrement } from "../Redux/Slice"
+import IncrementDecrementButton from "../UI/IncrementDecrementButton"
 
 
 function Shop() {
@@ -95,6 +100,17 @@ function Shop() {
         incomingData()
     },[id])
 
+
+    // add cart are start
+     const cartData = useSelector((item)=>item?.userData?.addCartData)
+     const cartDispatch = useDispatch()
+     console.log(cartData)
+    // add cart are end
+
+
+    // data increment are start
+    const incrementProduct = useDispatch()
+    // data increment area end
   
   return (
     <div>
@@ -106,7 +122,9 @@ function Shop() {
                     </div>
                     <div className="catagory-title flex flex-col gap-4">
                         {
-                            catagory.map((item)=>
+                            catagory.map((item)=>{
+
+                                return(
                                 <div key={item?._id} className="content flex items-center mx-10 justify-between">
                                     <div className="title flex items-center gap-1 cursor-pointer">
                                         <input className=" cursor-pointer" 
@@ -117,6 +135,8 @@ function Shop() {
                                     </div>
                                     <div className="icon">+</div>
                                 </div>
+                                )
+                                }
                             )
                         }
                     </div>
@@ -150,7 +170,10 @@ function Shop() {
                  </div> :
                   <div className="all-item grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-2">
                      {
-                        shopData.map((item)=>
+                        shopData.map((item)=>{
+                          const existCart = cartData.find((cart)=>cart?.id === item?._id )
+                          console.log("exist",existCart)
+                         return(  
                          <div key={item._id} className="all-c0ntent bg-white relative overflow-hidden group" >
                                 <Link to={`/product/${item?._id}`} className="image">
                                     <img src={item?.images[0]}/>
@@ -185,13 +208,36 @@ function Shop() {
                                         </div>
                                     </div>
                                     <div className=" cursor-pointer w-full    ">
-                                        <div className="button-area flex gap-4  text-md  py-[6px] items-center justify-center bg-[#ffa800] hover:bg-orange-700 duration-300">
+                                        {
+                                        existCart ?
+                                        <div>
+                                            <IncrementDecrementButton 
+                                                quentity={existCart?.quentity} 
+                                                incrementData={()=>incrementProduct(productIncrement({id:item?._id }))} 
+                                                className="py-1"/>
+                                         </div> :
+                                        <div
+                                          onClick={()=>cartDispatch(addToCart({
+                                            image:item?.images,
+                                            title:item?.name,
+                                            id:item._id,
+                                            price:item?.regularPrice,
+                                            quentity:1
+                                          }))}
+                                          className="button-area flex gap-4  text-md  py-2 items-center justify-center bg-[#ffa800] hover:bg-orange-700 duration-300">
                                             <p><BsMinecart /></p>
                                             <p className=" font-sans font-semibold">Add To Cart</p> 
-                                        </div>
+                                        </div> 
+                                        
+                                        }
                                     </div>
                                 </div>
-                    </div>
+                             </div>
+                             
+                            
+                            )
+                             
+                            }
                         )
                      }
                   </div>

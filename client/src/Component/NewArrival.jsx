@@ -8,6 +8,10 @@ import { LuRefreshCw } from "react-icons/lu";
 import { FaRegHeart } from "react-icons/fa";
 import { BsMinecart } from "react-icons/bs";
 import { Link } from "react-router-dom";
+import { addFavorite, addToCart, productDecrement, productIncrement } from "../Redux/Slice";
+import { useDispatch, useSelector } from "react-redux";
+import { ToastContainer, toast } from 'react-toastify';
+import IncrementDecrementButton from "../UI/IncrementDecrementButton";
 
 
 
@@ -25,7 +29,6 @@ function NewArrival() {
           setArraval(data)
        }catch(error){
         console.log(error)
-        console.log("sdfgsdfg")
        }
        setDataLoading(false)
     }
@@ -33,7 +36,23 @@ function NewArrival() {
   },[])
   // all data faching are end
 
- 
+  //  add to cart are start
+  const newArrivalDispatc = useDispatch()
+  const cartData = useSelector((item)=>item?.userData?.addCartData)
+  // add to cart area end
+  
+  // data increment area start
+  const productIncrementItem = useDispatch()
+  // data increment are end
+
+  // product decrement area start
+   const productDecrementArea = useDispatch()
+  // product decrement area end
+
+  // favorite add area start
+  const favorite = useDispatch()
+  // favorite area end
+  console.log(arraval)
   return (
     <div>
         <div className="all-content mx-8">
@@ -49,8 +68,9 @@ function NewArrival() {
                  :
                  <div className="all-content gap-2 grid grid-cols-1  md:grid-cols-4 lg:grid-cols-4">
                   {
-                    arraval.map((item)=>
-                       
+                    arraval.map((item)=>{
+                       const exitData =cartData.find((state)=>state?.id === item?._id )
+                      return(
                       <div key={item?._id} className="main-div bg-white relative  overflow-hidden ">
                            <div className="all-content group">
                               <Link to={`/product/${item?._id}`} className="image">
@@ -76,7 +96,18 @@ function NewArrival() {
                                             <div className="icon bg-[#ffbb38] cursor-pointer p-2">
                                                  <FaArrowsAlt className="text-xl" />
                                              </div>
-                                             <div className="icon bg-[#ffbb38] cursor-pointer p-2">
+                                             <div 
+                                             
+                                               onClick={()=>favorite(addFavorite({
+                                                  image: item?.images,
+                                                  title: item?.name,
+                                                  id: item._id,
+                                                  price: item?.regularPrice,
+                                                  quentity : 1,
+                                                  color:item?.colors
+                                                
+                                               }))}
+                                              className="icon bg-[#ffbb38] cursor-pointer p-2">
                                                  <FaRegHeart className="text-xl" />
                                              </div>
                                              <div className="icon bg-[#ffbb38] cursor-pointer p-2">
@@ -85,16 +116,43 @@ function NewArrival() {
                                         </div>
                                     </div>
                                     <div className=" cursor-pointer w-full    ">
-                                        <div className="button-area flex gap-4  text-md  py-[6px] items-center justify-center bg-[#ffa800] hover:bg-orange-700 duration-300">
+                                      {
+                                      exitData ?
+                                      <div className="">
+                                         <IncrementDecrementButton 
+                                                incrementData={()=>productIncrementItem(productIncrement({
+                                                   id:item._id,
+                                                }))   } 
+                                                decrementData={()=>productDecrementArea(productDecrement({
+                                                  id:item._id,
+                                                }))}
+                                                quentity={exitData?.quentity} 
+                                                className="py-1"
+                                          />
+                                       </div>
+                                      :
+                                       <div 
+                                            onClick={()=>newArrivalDispatc(addToCart({
+                                              image: item?.images,
+                                              title: item?.name,
+                                              id: item._id,
+                                              price: item?.regularPrice,
+                                              quentity: 1
+                                             })) && toast.success(`${item?.name.substring(0,10)} is added`)}
+                                        
+                                           className="button-area flex gap-4  text-md  py-[6px] items-center justify-center bg-[#ffa800] hover:bg-orange-700 duration-300">
                                             <p><BsMinecart /></p>
+                                            <ToastContainer />
                                             <p className=" font-sans font-semibold text-base">Add To Cart</p> 
-                                        </div>
+                                        </div> 
+                                        
+                                      }
                                     </div>
                                 </div>
                            </div>
-                      </div>
+                      </div>)
                     
-                    )
+                      })
                   }
                  </div>
                }
