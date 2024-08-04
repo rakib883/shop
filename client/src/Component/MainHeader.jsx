@@ -278,13 +278,13 @@ const googleHandler = () => {
                                <div className=" cursor-pointer relative">
                                    <FaRegHeart className="text-2xl" />
                                     <div className="text absolute flex justify-center items-center bg-[#ffbb38] w-4 h-4 rounded-full top-[-5px] right-[-12px]">
-                                      <p className=" text-base">0</p>
+                                      <p className=" text-base">{cartSelector?.length}</p>
                                     </div>
                                 </div>
                                 <div className=" cursor-pointer relative">
                                    <FiRefreshCcw  className="text-2xl" />
                                     <div className="text absolute flex justify-center items-center bg-[#ffbb38] w-4 h-4 rounded-full top-[-5px] right-[-12px]">
-                                      <p className=" text-base ">10000000000</p>
+                                      <p className=" text-base ">{cartSelector?.length}</p>
                                     </div>
                                 </div>
                                 {
