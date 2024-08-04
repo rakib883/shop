@@ -3,7 +3,7 @@ import { createSlice } from '@reduxjs/toolkit'
 export const counterSlice = createSlice({
   name: 'counter',
   initialState: {
-    user: {},
+    user: null,
     addCartData: [],
     favorite:[]
   },
@@ -43,11 +43,27 @@ export const counterSlice = createSlice({
        if(!existing){
         state.favorite.push(action?.payload)
        }
+     },
+     resetFavorite:(state)=>{
+        state.favorite = []
+     },
+     favoriteProductSinglProductRemove:(state,action)=>{
+         state.favorite = state?.favorite?.filter((item)=>item?.id !== action?.payload?.id)
      }
+
   }
 })
 
 // Action creators are generated for each case reducer function
-export const { addUser, addToCart,singleItemRemove,productIncrement,productDecrement,addFavorite} = counterSlice.actions
+export const { 
+     addUser, 
+     addToCart,
+     singleItemRemove,
+     productIncrement,
+     productDecrement,
+     addFavorite,
+     resetFavorite,
+     favoriteProductSinglProductRemove
+    } = counterSlice.actions
 
 export default counterSlice.reducer

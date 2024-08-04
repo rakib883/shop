@@ -4,7 +4,7 @@ import Title from "./Title"
 function BestSeller() {
   const [seller,setSeller] = useState([])
    useEffect(()=>{
-      fetch("http://localhost:3000/bestseller")
+      fetch("https://shop-steel-ten.vercel.app/bestseller")
       .then(res=>res.json())
       .then(res=>setSeller(res))
    },[seller])

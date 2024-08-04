@@ -24,7 +24,7 @@ function NewArrival() {
     setDataLoading(true)
     const newArravlaData = async()=>{
        try{
-          const response = await fetch("http://localhost:3000/product")
+          const response = await fetch("https://shop-steel-ten.vercel.app/product")
           const data =await response.json()
           setArraval(data)
        }catch(error){
@@ -52,7 +52,7 @@ function NewArrival() {
   // favorite add area start
   const favorite = useDispatch()
   // favorite area end
-  console.log(arraval)
+  
   return (
     <div>
         <div className="all-content mx-8">
@@ -99,12 +99,12 @@ function NewArrival() {
                                              <div 
                                              
                                                onClick={()=>favorite(addFavorite({
-                                                  image: item?.images,
-                                                  title: item?.name,
-                                                  id: item._id,
-                                                  price: item?.regularPrice,
-                                                  quentity : 1,
-                                                  color:item?.colors
+                                                image: item?.images,
+                                                title: item?.name,
+                                                id: item._id,
+                                                price: item?.regularPrice,
+                                                quentity : 1,
+                                                color:item?.colors
                                                 
                                                }))}
                                               className="icon bg-[#ffbb38] cursor-pointer p-2">
@@ -137,7 +137,9 @@ function NewArrival() {
                                               title: item?.name,
                                               id: item._id,
                                               price: item?.regularPrice,
-                                              quentity: 1
+                                              quentity: 1,
+                                              color:item?.colors,
+                                              productSize:"X"
                                              })) && toast.success(`${item?.name.substring(0,10)} is added`)}
                                         
                                            className="button-area flex gap-4  text-md  py-[6px] items-center justify-center bg-[#ffa800] hover:bg-orange-700 duration-300">

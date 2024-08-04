@@ -19,7 +19,7 @@ function Home() {
 //  wazworld area start 
   const [waz,setWaz]= useState([])
  useEffect(()=>{
-      fetch("http://localhost:3000/wazworld")
+      fetch("https://shop-steel-ten.vercel.app/wazworld")
           .then(res=>res.json())
           .then(res=>setWaz(res))
  },[])
@@ -30,7 +30,7 @@ function Home() {
 
     const [topSelling,setTopSelling] = useState([])
     useEffect(()=>{
-      fetch("http://localhost:3000/wazworld")
+      fetch("https://shop-steel-ten.vercel.app/wazworld")
       .then(res=>res.json())
       .then(res=>setTopSelling(res))
     },[topSelling])

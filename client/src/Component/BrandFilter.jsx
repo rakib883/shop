@@ -10,7 +10,7 @@ function BrandFilter() {
   useEffect(()=>{
     const incoomingData  = async()=>{
       try{
-         const response = await FachingData("http://localhost:3000/product")
+         const response = await FachingData("https://shop-steel-ten.vercel.app/product")
          setDataBrand(response)
       }catch(error){
         console.log(error)

@@ -6,7 +6,7 @@ function ShopByBrand() {
     const [brand,setBrand] = useState([])
    
     useEffect(()=>{
-        fetch("http://localhost:3000/brand")
+        fetch("https://shop-steel-ten.vercel.app/brand")
         .then(res=>res.json())
         .then(res=>setBrand(res))
     },[brand])

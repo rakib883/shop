@@ -20,7 +20,7 @@ function NavBar() {
     useEffect(()=>{
         const fachingData = async()=>{
           try{
-            const response = await fetch("http://localhost:3000/catagories")
+            const response = await fetch("https://shop-steel-ten.vercel.app/catagories")
             const data =await response.json()
             setCatagoru(data)
           }catch(error){

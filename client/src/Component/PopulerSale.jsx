@@ -12,7 +12,7 @@ function PopulerSale() {
     setPageloading(true)
      const wazData = async() =>{
        try{
-           const response = await  fetch("http://localhost:3000/wazworld")
+           const response = await  fetch("https://shop-steel-ten.vercel.app/wazworld")
            const data = await response.json()
            setWaz(data)
            setPageloading(false)    

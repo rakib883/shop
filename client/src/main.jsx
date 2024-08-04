@@ -17,6 +17,12 @@ import Contact from './Page/Contact';
 import { Provider } from 'react-redux';
 import Store from './Redux/Store';
 import Wishlist from './Page/wishlist';
+import Cart from './Page/Cart';
+import ProtectPage from './User/ProtectPage';
+import Profile from './User/Profile';
+import DashBord from './Page/DashBord';
+import PersonalInfo from './User/PersonalInfo';
+
 
 const router = createBrowserRouter([
   {
@@ -36,6 +42,26 @@ const router = createBrowserRouter([
           element:<About/>
          },
          {
+           path:"/user",
+           element:<ProtectPage/>,
+           children:[
+            {
+              path:"profile",
+              element:<Profile/>,
+              children:[
+                {
+                  path:"",
+                  element:<DashBord/>
+                },
+                {
+                  path:"personal-info",
+                  element:<PersonalInfo/>
+                }
+              ]
+            }
+           ]
+         },
+         {
           path:"contact",
           element:<Contact/>
          },
@@ -50,6 +76,10 @@ const router = createBrowserRouter([
           {
             path:"/wishlist",
             element:<Wishlist/>
+          },
+          {
+            path:"/cart",
+            element:<Cart/>
           },
           {
             path:"*",

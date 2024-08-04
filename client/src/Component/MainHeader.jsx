@@ -1,4 +1,4 @@
-import { Link, useNavigate } from "react-router-dom"
+import { Link,} from "react-router-dom"
 import logog from "../assets/logo.svg"
 import { FaRegUser } from "react-icons/fa6";
  import { LiaShoppingBagSolid } from "react-icons/lia";
@@ -38,7 +38,7 @@ function MainHeader() {
    useEffect(()=>{
       const fetchData = async()=>{
        try{
-         const response = await fetch("http://localhost:3000/catagories")
+         const response = await fetch("https://shop-steel-ten.vercel.app/catagories")
          const data = await response.json()
          setCatagory(data)
        }catch(error){
@@ -77,7 +77,11 @@ function MainHeader() {
 const auth = getAuth(app);
 const googleProvider = new GoogleAuthProvider();
 const [user,setUser] = useState(false)
-const navagete = useNavigate("")
+
+
+
+
+
 const googleHandler = () => {
   setUserArea(false)
   signInWithPopup(auth, googleProvider)
@@ -92,9 +96,9 @@ const googleHandler = () => {
         image:result?.user?.photoURL
       }))
 
-      setTimeout(()=>{
-        navagete("/shop")
-      },1500)
+      // setTimeout(()=>{
+      //   navagete("/shop")
+      // },1500)
      
       // Handle user data, e.g., save it to state or local storage
     })
@@ -118,16 +122,18 @@ const googleHandler = () => {
   {/* addcart area start */}
    const cartSelector = useSelector((state)=>state?.userData?.addCartData)
   
-   const [totalPrice,setTotalPrice] = useState()
+   const [totalPrice,setTotalPrice] = useState(12)
    cartSelector.map((item)=>item?.price )
     useEffect(()=>{
       let price = 0
       cartSelector.map((item)=>{
-         price += item?.price * item?.quantity
+         price += item?.price * item?.quentity
       })
       setTotalPrice(price)
     },[cartSelector])
 
+
+    console.log("dgdfgdg",totalPrice)
     const singleCartDataRemove = useDispatch()
 
 
@@ -391,10 +397,10 @@ const googleHandler = () => {
                     {/* desktop cart area start */}
                     <div className="user cursor-pointer relative ">
 
-                       <div onMouseEnter={()=>setCartItem(true)} onMouseLeave={()=>setCartItem(false)} className="main-content">
+                       <Link to="/cart" onMouseEnter={()=>setCartItem(true)} onMouseLeave={()=>setCartItem(false)} className="main-content">
                             <LiaShoppingBagSolid className="text-2xl" />
                             <p className=" absolute top-[-10px] right-[-10px] flex justify-center items-center bg-[#ffbb38] rounded-full w-5 h-5">{cartSelector?.length}</p>
-                        </div>
+                        </Link>
                          {
                           cartItem &&
                          <motion.div
@@ -440,7 +446,7 @@ const googleHandler = () => {
                                     <div className="main mx-8">
                                         <div className="title flex py-4 justify-between font-sans font-semibold">
                                           <h1>Total</h1>
-                                          <h1>{totalPrice}</h1>
+                                          <h1><PrizeFormat price={totalPrice}/></h1>
                                         </div>
                                         <div className="button flex gap-2 flex-col my-4">
                                           <button className=" bg-gray-400 font-semibold text-white font-sans py-2">View Cart</button> 
@@ -468,9 +474,9 @@ const googleHandler = () => {
                       {
                         user ?
                         <div className="user-items">
-                          <div className="image h-10 w-10">
-                              <img className=" rounded-full" src={profileData?.image}  alt="profile" />
-                          </div>
+                          <Link to="user/profile" className="image ">
+                              <img className=" rounded-full h-10 w-10" src={profileData?.image}  alt="profile" />
+                          </Link>
                         </div> 
                           :
                           <div 

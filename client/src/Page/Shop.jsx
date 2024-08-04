@@ -14,7 +14,7 @@ import { Commet } from "react-loading-indicators"
 import { useDispatch, useSelector } from "react-redux"
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { addToCart, productIncrement } from "../Redux/Slice"
+import { addFavorite, addToCart, productDecrement, productIncrement } from "../Redux/Slice"
 import IncrementDecrementButton from "../UI/IncrementDecrementButton"
 
 
@@ -111,6 +111,16 @@ function Shop() {
     // data increment are start
     const incrementProduct = useDispatch()
     // data increment area end
+
+
+    // decrement area start
+     const shopProductDecrement = useDispatch()
+    // decrement area end
+
+
+    // favrite area start
+    const favoriteDispatch = useDispatch()
+    // favorite are end
   
   return (
     <div>
@@ -199,7 +209,17 @@ function Shop() {
                                             <div className="icon bg-[#ffbb38] cursor-pointer p-2">
                                                 <FaArrowsAlt className="text-xl" />
                                             </div>
-                                            <div className="icon bg-[#ffbb38] cursor-pointer p-2">
+                                            <div 
+                                               onClick={()=>favoriteDispatch(addFavorite({
+                                                    image:item?.images,
+                                                    title: item?.name,
+                                                    id: item._id,
+                                                    price: item?.regularPrice,
+                                                    quentity : 1,
+                                                    color:item?.colors
+
+                                               }))}
+                                              className="icon bg-[#ffbb38] cursor-pointer p-2">
                                                 <FaRegHeart className="text-xl" />
                                             </div>
                                             <div className="icon bg-[#ffbb38] cursor-pointer p-2">
@@ -214,6 +234,7 @@ function Shop() {
                                             <IncrementDecrementButton 
                                                 quentity={existCart?.quentity} 
                                                 incrementData={()=>incrementProduct(productIncrement({id:item?._id }))} 
+                                                decrementData={()=>shopProductDecrement(productDecrement({id:item?._id}))}
                                                 className="py-1"/>
                                          </div> :
                                         <div
@@ -222,11 +243,13 @@ function Shop() {
                                             title:item?.name,
                                             id:item._id,
                                             price:item?.regularPrice,
-                                            quentity:1
-                                          }))}
+                                            quentity:1,
+                                            productSize:"X"
+                                          })) && toast.success("Item added to cart successfully!")}
                                           className="button-area flex gap-4  text-md  py-2 items-center justify-center bg-[#ffa800] hover:bg-orange-700 duration-300">
                                             <p><BsMinecart /></p>
                                             <p className=" font-sans font-semibold">Add To Cart</p> 
+                                            <ToastContainer />
                                         </div> 
                                         
                                         }

@@ -21,7 +21,9 @@ function WazWorld({ waZdata = [], bannerImage, linkItems = [], header, footer })
       title: item?.name,
       id: item._id,
       price: item?.regularPrice,
-      quentity : 1
+      quentity : 1,
+      color:item?.colors,
+      productSize:"X"
     }));
     toast.success(`${item?.name.substring(0,10)} is added`);
   };

@@ -4,7 +4,7 @@ import MainHeader from "./Component/MainHeader"
 import NavBar from "./Component/NavBar"
 import MainFoter from "./Component/Foter/MainFoter"
 import SubFoter from "./Component/Foter/SubFoter"
-import 'react-toastify/dist/ReactToastify.css';
+
 
 function App() {
   return (

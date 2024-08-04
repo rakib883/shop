@@ -96,7 +96,9 @@ const decrement = useDispatch()
                                                 title:item?.name,
                                                 id:item._id,
                                                 price:item?.regularPrice,
-                                                quentity:1
+                                                quentity:1,
+                                                color:item?.colors,
+                                                productSize:"X"
                                             })) &&  toast.success(`${item?.name} is added`)}
                                             className="order cursor-pointer w-[150px] text-center bg-[#ffbb38] px-4 py-[4px] font-sans font-semibold">
                                             <p>Add To Cart</p>

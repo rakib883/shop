@@ -8,7 +8,7 @@ function PopulerSell() {
 
     useEffect(()=>{
         const arrvalData = async()=>{
-             const response = await fetch("http://localhost:3000/product")
+             const response = await fetch("https://shop-steel-ten.vercel.app/product")
              const data = await response.json()
              setNewArraval(data)
         }
@@ -30,7 +30,7 @@ function PopulerSell() {
                                 <img src={item?.images[0]}/>
                              </Link>
                              <div className="content">
-                                <h1 className=" font-sans font-semibold hover:text-green-900 cursor-pointer">{item?.name.substring(0,30)}</h1>
+                                <Link to={`/product/${item?._id}`} ><h1 className=" font-sans font-semibold hover:text-[green] cursor-pointer duration-300">{item?.name.substring(0,30)}</h1></Link>
                                 <div className="prize-area flex gap-2 items-center">
                                     <del><PrizeFormat className=" font-semibold text-sm" price={item?.regularPrice}/></del>
                                     <PrizeFormat className=" font-semibold text-lg text-red-800" price={item?. discountedPrice}/>
