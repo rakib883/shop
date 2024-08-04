@@ -284,12 +284,19 @@ const googleHandler = () => {
                                 <div className=" cursor-pointer relative">
                                    <FiRefreshCcw  className="text-2xl" />
                                     <div className="text absolute flex justify-center items-center bg-[#ffbb38] w-4 h-4 rounded-full top-[-5px] right-[-12px]">
-                                      <p className=" text-base ">10</p>
+                                      <p className=" text-base ">10000000000</p>
                                     </div>
                                 </div>
+                                {
+                                user ?
+                                <div className="main">
+                                    <img className=" rounded-full h-10 w-10" src={profileData?.image}  alt="profile" />
+                                </div>
+                                :
                                 <div onClick={()=>{setUserArea(true),setCatagoryHandeler(false) }} className="user cursor-pointer">
                                    <FaRegUserCircle className=" text-2xl" />
                                 </div>
+                                }
                             </div>
 
 
