@@ -25,31 +25,31 @@ function Profile() {
                  </div>
                  <div className="main-area flex flex-col gap-8 py-2"> 
                       <Link to="" className="all-link flex items-center gap-2 text-[#797979] duration-300 cursor-pointer hover:text-black">
-                          <div className="icon"><MdDashboard className=" text-[25px]" /></div>
+                          <div className="icon"><MdDashboard className=" text-[20px]" /></div>
                           <div className="text"><h1 className=" font-sans font-semibold text-[20px]">Dashbord</h1></div>
                       </Link>
                       <Link to="personal-info" className="all-link flex items-center gap-2 text-[#797979] duration-300 cursor-pointer hover:text-black">
-                          <div className="icon"><FaUserAlt className=" text-[25px]" /></div>
+                          <div className="icon"><FaUserAlt className=" text-[20px]" /></div>
                           <div className="text"><h1 className=" font-sans font-semibold text-[20px]">Personal info</h1></div>
                        </Link>
                       <div className="all-link flex items-center gap-2 text-[#797979] duration-300 cursor-pointer hover:text-black">
-                         <div className="icon"><MdOutlinePayment className=" text-[25px]" /></div>
+                         <div className="icon"><MdOutlinePayment className=" text-[20px]" /></div>
                          <div className="text"><h1 className=" font-sans font-semibold text-[20px]">Payment Method</h1></div>
                       </div>
                       <div className="all-link flex items-center gap-2 text-[#797979] duration-300 cursor-pointer hover:text-black">
-                          <div className="icon"><MdOutlineLocalGroceryStore className=" text-[25px]" /></div>
+                          <div className="icon"><MdOutlineLocalGroceryStore className=" text-[20px]" /></div>
                           <div className="text"><h1 className=" font-sans font-semibold text-[20px]">Order</h1></div>
                       </div>
                       <div className="all-link flex items-center gap-2 text-[#797979] duration-300 cursor-pointer hover:text-black">
-                        <div className="icon"><FaHeart className=" text-[25px]" /></div>
+                        <div className="icon"><FaHeart className=" text-[20px]" /></div>
                         <div className="text"><h1 className=" font-sans font-semibold text-[20px]">Wishlist</h1></div>
                        </div>
                         <div className="all-link flex items-center gap-2 text-[#797979] duration-300 cursor-pointer hover:text-black">
-                          <div className="icon"><FaAddressBook className=" text-[25px]" /></div>
+                          <div className="icon"><FaAddressBook className=" text-[20px]" /></div>
                           <div className="text"><h1 className=" font-sans font-semibold text-[20px]">Address</h1></div>
                         </div>
                         <div className="all-link flex items-center gap-2 text-[#797979] duration-300 cursor-pointer hover:text-black">
-                          <div className="icon"><MdOutlinePreview className=" text-[25px]" /></div>
+                          <div className="icon"><MdOutlinePreview className=" text-[20px]" /></div>
                           <div className="text"><h1 className=" font-sans font-semibold text-[20px]">Rivew</h1></div>
                         </div>
                         <div className="all-link flex items-center gap-2 text-[#797979] duration-300 cursor-pointer hover:text-black">
@@ -57,11 +57,11 @@ function Profile() {
                           <div className="text"><h1 className=" font-sans font-semibold text-[20px]">Change Password</h1></div>
                         </div>
                         <div className="all-link flex items-center gap-2 text-[#797979] duration-300 cursor-pointer hover:text-black">
-                          <div className="icon"><FcSupport className=" text-[25px]" /></div>
+                          <div className="icon"><FcSupport className=" text-[20px]" /></div>
                           <div className="text"><h1 className=" font-sans font-semibold text-[20px]">Support</h1></div>
                         </div>
                         <div className="all-link flex items-center gap-2 text-[#797979] duration-300 cursor-pointer hover:text-black">
-                          <div className="icon"><MdLogout className=" text-[25px]" /></div>
+                          <div className="icon"><MdLogout className=" text-[20px]" /></div>
                           <div className="text"><h1 className=" font-sans font-semibold text-[20px]">Logout</h1></div>
                         </div>
                  </div>
