@@ -26,7 +26,7 @@ function Shop() {
      useEffect(()=>{
         const fachingData = async()=>{
             try{
-                const catagoryUrl = "http://localhost:3000/catagories"
+                const catagoryUrl = "https://shop-steel-ten.vercel.app/catagories"
                 const Newdata = await FachingData(catagoryUrl)
                 setCatagory(Newdata)
             }catch(error){
@@ -44,7 +44,7 @@ function Shop() {
         const fachingData = async()=>{
             setLoading(true)
             try{
-                const catagoryUrl = "http://localhost:3000/product"
+                const catagoryUrl = "https://shop-steel-ten.vercel.app/product"
                 const Newdata = await FachingData(catagoryUrl)
                 setShopData(Newdata)
             }catch(error){
@@ -65,7 +65,7 @@ function Shop() {
           if(reciveCatagoryBase){
             setLoading(true)
             try{
-                const response = await fetch(`http://localhost:3000/catagories/${reciveCatagoryBase}`)
+                const response = await fetch(`https://shop-steel-ten.vercel.app/catagories/${reciveCatagoryBase}`)
                 const data = await response.json()
                 setShopData(data)
               }catch(error){
@@ -87,7 +87,7 @@ function Shop() {
           if(id){
             setLoading(true)
             try{
-                const response = await fetch(`http://localhost:3000/catagories/${id}`)
+                const response = await fetch(`https://shop-steel-ten.vercel.app/catagories/${id}`)
                 const data = await response.json()
                 setShopData(data)
               }catch(error){
