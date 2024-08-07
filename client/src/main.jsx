@@ -22,6 +22,9 @@ import ProtectPage from './User/ProtectPage';
 import Profile from './User/Profile';
 import DashBord from './Page/DashBord';
 import PersonalInfo from './User/PersonalInfo';
+import Pament from './Page/Pament';
+import ProfileWishList from './Page/ProfileWishList';
+
 
 
 const router = createBrowserRouter([
@@ -56,7 +59,15 @@ const router = createBrowserRouter([
                 {
                   path:"personal-info",
                   element:<PersonalInfo/>
-                }
+                },
+                {
+                  path:"pament-info",
+                  element:<Pament/>,
+                },
+                {
+                  path:"wishlist",
+                  element:<ProfileWishList/>
+                },
               ]
             }
            ]

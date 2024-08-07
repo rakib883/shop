@@ -17,7 +17,7 @@ import { motion } from "framer-motion"
 import { FaGoogle } from "react-icons/fa";
 import { FaFacebookF } from "react-icons/fa6";
 import app from "../Firebase/Firebase";
-import { signInWithPopup } from "firebase/auth";
+import { signInWithPopup, signOut } from "firebase/auth";
 import { GoogleAuthProvider } from "firebase/auth";
 import { getAuth } from "firebase/auth";
 import { useDispatch, useSelector } from "react-redux";
@@ -146,6 +146,13 @@ const googleHandler = () => {
   // favorite area start
   const favoriteData = useSelector((item)=>item?.userData?.favorite)
   // favorite area end
+ 
+    
+  
+  
+
+
+
   return (
     <div className="bg-white sticky top-0 z-50 shadow-xl">
        {/* login system are start */}

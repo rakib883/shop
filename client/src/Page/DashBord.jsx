@@ -7,7 +7,7 @@ import { useSelector } from "react-redux";
 
 function DashBord() {
     const userData = useSelector((item)=>item?.userData?.user)
-    console.log(userData)
+    
   return (
     <div>
         <div className="main mt-14">

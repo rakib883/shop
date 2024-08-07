@@ -104,7 +104,6 @@ function Shop() {
     // add cart are start
      const cartData = useSelector((item)=>item?.userData?.addCartData)
      const cartDispatch = useDispatch()
-     console.log(cartData)
     // add cart are end
 
 
@@ -121,7 +120,33 @@ function Shop() {
     // favrite area start
     const favoriteDispatch = useDispatch()
     // favorite are end
-  
+
+
+    // price range area start 
+    const [priceRange, setPriceRange] = useState(0);
+
+    useEffect(() => {
+        const fetchPriceRange = async () => {
+            setLoading(true)
+        if (priceRange) {
+            try {
+                const response = await fetch("https://shop-steel-ten.vercel.app/product");
+                const product = await response.json();
+                const rangeData = product.filter((item) => item?.regularPrice > priceRange);
+                setShopData(rangeData)
+                setLoading(false)
+            } catch (error) {
+                console.log(error);
+                setLoading(false)
+            }
+        }
+    };
+    
+    fetchPriceRange();
+}, [priceRange]);
+
+    // price range area end
+    console.log(shopData)
   return (
     <div>
         <div className="all-content mx-8 flex my-4 gap-2">
@@ -154,10 +179,10 @@ function Shop() {
                     <div className="content my-10 mx-8 ">
                             <div className="prize flex items-center justify-between font-sans font-md font-semibold">
                               <h1 className="m-2">Prize Range</h1>
-                              <h1 className="m-2">Prize : 235</h1>
+                              <h1 className="m-2 text-[16px]">Prize : <PrizeFormat price={priceRange}/></h1>
                             </div>
                             <div className="content-body  ">
-                               <input className="w-full placeholder:bg-orange-500" type="range" />
+                               <input onChange={(e)=>setPriceRange(e.target.value)} max="1000" className="w-full placeholder:bg-orange-500" type="range" />
                             </div>
                         <h1>{}</h1>
                     </div>
@@ -169,10 +194,23 @@ function Shop() {
                         <BrandFilter/>
                       </div>
                      {/* brand area end */}
-
+                     
+                     {/* ads area start  */}
+                      <div className="ads-area">
+                         <div className="content">
+                            <div className="mx-6">
+                               <img className=" w-full h-full" src="https://i.ibb.co/ZXL4fHp/ads-5.png" alt="" />
+                            </div>
+                         </div>
+                      </div>
+                     {/* ads area end */}
                 </div>
             </div>
             <div className="product-area w-full  md:w-[75%] ">
+                <div className="small-device bg-white mb-2 px-4 py-2">
+                  <div className="item font-semibold font-sans">Showing 1-16 {shopData?.length} result</div>
+                  <div className="item"></div>
+                </div>
                 {
                 loading ?
                  <div className="loader flex justify-center items-center h-screen">
