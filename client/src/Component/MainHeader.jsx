@@ -132,8 +132,6 @@ const googleHandler = () => {
       setTotalPrice(price)
     },[cartSelector])
 
-
-    console.log("dgdfgdg",totalPrice)
     const singleCartDataRemove = useDispatch()
 
 
@@ -272,7 +270,7 @@ const googleHandler = () => {
 
 
 
-        <div className="main-content mx-8 flex  items-center py-6">
+        <div className="main-content mx-8 flex  items-center md:py-6 py-1">
             <div className="logo-area w-[30%]">
                 <div className="image-area">
                   <FaBarsStaggered onClick={()=>setCatagoryHandeler(true)} className=" block  md:hidden text-xl cursor-pointer" />
@@ -419,7 +417,7 @@ const googleHandler = () => {
                           cartItem &&
                          <motion.div
                             initial={{ x: "100%" }}
-                            animate={{ x: userArea ? "100%" : "10%" }}
+                            animate={{ x: userArea ? "100%" : "20%" }}
                             transition={{ duration: .5, ease: "easeInOut" }}
 
 

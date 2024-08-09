@@ -17,13 +17,15 @@ import Contact from './Page/Contact';
 import { Provider } from 'react-redux';
 import Store from './Redux/Store';
 import Wishlist from './Page/wishlist';
-import Cart from './Page/Cart';
 import ProtectPage from './User/ProtectPage';
 import Profile from './User/Profile';
 import DashBord from './Page/DashBord';
 import PersonalInfo from './User/PersonalInfo';
 import Pament from './Page/Pament';
 import ProfileWishList from './Page/ProfileWishList';
+import PamentSuccess from './Page/Success';
+import Cart from './Page/Cart';
+import PamentCancel from './Page/Cancel';
 
 
 
@@ -40,6 +42,14 @@ const router = createBrowserRouter([
             path:"Shop",
             element:<Shop/>
          },
+         {
+          path:"/pament-success",
+          element:<PamentSuccess/>
+        },
+        {
+          path:"/pament-cancell",
+          element:<PamentCancel/>
+        },
          {
           path:"about",
           element:<About/>
@@ -92,6 +102,7 @@ const router = createBrowserRouter([
             path:"/cart",
             element:<Cart/>
           },
+          
           {
             path:"*",
             element:<NotFound/>
