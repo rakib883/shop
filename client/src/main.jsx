@@ -40,7 +40,7 @@ const router = createBrowserRouter([
           },
           {
             path:"Shop",
-            element:<Shop/>
+            element:<PamentSuccess/>
          },
          {
           path:"/pament-success",
