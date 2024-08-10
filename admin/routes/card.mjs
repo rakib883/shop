@@ -8,7 +8,7 @@ router.post("/card",async(req,res)=>{
     const cardMethod = new  cardMethidModal(req.body)
     try{
         
-        const existingData = await cardMethidModal.findOne({cardNumber:req.body?.cardNumber,})
+        const existingData = await cardMethidModal.findOne({cardNumber:req.body?.cardNumber, })
 
         if(existingData){
             return res.status(409).json({message:"This cartt allredy added"})
