@@ -26,15 +26,15 @@ router.post("/proced-checkout", async (req, res) => {
             payment_method_types: ['card'],
             line_items: lineItems,
             mode: 'payment',
-            success_url: 'http://localhost:5173/pament-success',
-            cancel_url: 'http://localhost:5173/pament-cancel',
+            success_url: 'https://shop-z3aw.vercel.app/pament-success',
+            cancel_url: 'https://shop-z3aw.vercel.app/pament-cancel',
         });
 
         res.json(session);
     } catch (error) {
         console.error('Error creating Stripe Checkout session:', error);
         res.status(500).json({ error: 'Something went wrong' });
-        
+
     }
 });
 
