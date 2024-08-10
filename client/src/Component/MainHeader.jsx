@@ -57,6 +57,7 @@ function MainHeader() {
     {name :"About",path:"/about"},
     {name :"Blog",path:"/blog"},
     {name :"Contact",path:"/contact"},
+    {name :"Contact",path:"/pament-success"},
 ]
   // main mobile menu are end
 
