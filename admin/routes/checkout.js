@@ -26,8 +26,8 @@ router.post("/proced-checkout", async (req, res) => {
             payment_method_types: ['card'],
             line_items: lineItems,
             mode: 'payment',
-            success_url: 'https://shop-z3aw.vercel.app/pament-success',
-            cancel_url: 'https://shop-z3aw.vercel.app/pament-cancel',
+            success_url: 'https:/shop-z3aw.vercel.app/pament-success',
+            cancel_url: 'https:/shop-z3aw.vercel.app/pament-cancel',
         });
 
         res.json({ id: session.id });
