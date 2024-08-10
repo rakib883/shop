@@ -14,7 +14,7 @@ const CartProduct = () => {
        { name:"sakib",}
     ]
 
-    
+
     const cartData = useSelector((state) => state?.userData?.addCartData || []);
     const dispatch = useDispatch();
     const [radioData, setRadioCheck] = useState("");
@@ -40,7 +40,7 @@ const CartProduct = () => {
                 headers:{
                     "Content-Type" : "application/json",
                 },
-                body:JSON.stringify(cartData,userData)
+                body:JSON.stringify(cartData)
             })
 
             const session = await response.json()
