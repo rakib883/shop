@@ -9,6 +9,10 @@ import { useEffect, useState } from "react";
 import { loadStripe } from "@stripe/stripe-js";
 
 const CartProduct = () => {
+    const userData = [
+       { name:"Rakib",},
+       { name:"sakib",}
+    ]
     const cartData = useSelector((state) => state?.userData?.addCartData || []);
     const dispatch = useDispatch();
     const [radioData, setRadioCheck] = useState("");
@@ -38,14 +42,16 @@ const CartProduct = () => {
             })
 
             const session = await response.json()
-            const result = stripe.redirectToCheckout({
-                sessionId:session.id
+              const result = stripe.redirectToCheckout({
+                 sessionId:session.id
             })
+        console.log(session)
+           
         }catch(error){
             console.log(error)
         }
     }
-
+   
     return (
         <div>
             {cartData.length > 0 ? (

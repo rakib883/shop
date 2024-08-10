@@ -47,7 +47,7 @@ const router = createBrowserRouter([
           element:<PamentSuccess/>
         },
         {
-          path:"/pament-cancell",
+          path:"/pament-cancel",
           element:<PamentCancel/>
         },
          {
