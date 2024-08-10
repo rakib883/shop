@@ -1,4 +1,5 @@
 import { MdOutlineEmail } from "react-icons/md";
+import { Link } from "react-router-dom";
 function FoterOffer() {
   return (
     <div>

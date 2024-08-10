@@ -28,6 +28,7 @@ function MainFoter() {
                <FoterTitle title="About Us"/>
             </div>
             <div className="pragraph max-w-[200px] text-[#9e9fa7] font-sans">
+            <Link to="/pament-success" className=" bg-red-600">ttttttttttt</Link>
                We know there are a lot of threa developers our but we pride into a firm in the industry.
             </div>
          </div>
