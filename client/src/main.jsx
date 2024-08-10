@@ -43,11 +43,11 @@ const router = createBrowserRouter([
             element:<Shop/>
          },
          {
-          path:"/pament-success",
+          path:"pament-success",
           element:<PamentSuccess/>
         },
         {
-          path:"/pament-cancel",
+          path:"pament-cancel",
           element:<PamentCancel/>
         },
          {
