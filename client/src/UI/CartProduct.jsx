@@ -41,6 +41,7 @@ const CartProduct = () => {
             const result = stripe.redirectToCheckout({
                 sessionId:session.id
             })
+            console.log(result)
         }catch(error){
             console.log(error)
         }

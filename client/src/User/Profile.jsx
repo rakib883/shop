@@ -63,6 +63,9 @@ function Profile() {
         </div>
         <div className="content w-[80%] my-4 border-l-2"><Outlet /></div>
       </div>
+      <div className="small-content">
+        
+      </div>
       <FoterOffer />
     </div>
   );
