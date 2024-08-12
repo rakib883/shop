@@ -1,4 +1,4 @@
-import { Link,} from "react-router-dom"
+import { Link, useNavigate,} from "react-router-dom"
 import logog from "../assets/logo.svg"
 import { FaRegUser } from "react-icons/fa6";
  import { LiaShoppingBagSolid } from "react-icons/lia";
@@ -29,6 +29,24 @@ import PrizeFormat from "./PrizeFormat";
 
 
 function MainHeader() {
+  
+  
+  // search operation start
+const [searchData,setSearchData] = useState(null)
+const navegate = useNavigate()
+const searcHandeler =()=>{
+  if(searchData){
+    navegate(`search/${searchData}`) 
+   setSearchData("")
+  }
+}
+
+// search operation are end
+
+
+
+
+
   // menu catagory area start
    const [catagoryOpen,setcatagoryItems] = useState(true)
   // menu catagory are end
@@ -157,7 +175,7 @@ const googleHandler = () => {
           { 
            userArea &&
           <div className="center0popup   absolute top-0 w-full h-screen z-40">
-              <div className="main-items max-w-lg  md:max-w-xl mx-auto h-screen flex flex-col gap-y-4 justify-center items-center">
+              <div className="main-items max-w-md  md:max-w-xl mx-auto h-screen flex flex-col gap-y-4 justify-center items-center">
                   <motion.div
                        initial={{ y: "100%" }}
                        animate={{ y: userArea ? "0%" : "100%" }}
@@ -384,12 +402,12 @@ const googleHandler = () => {
                 {/* mobile items end */}
                 <div className="all-content md:flex md:justify-between justify-center items-center border hidden md:block    ">
                      <div className="w-[50%] relative customSideBorder">
-                        <input className=" lg:w-[80%]  px-2 outline-none border-none bg-white" type="text" placeholder="Search" />
+                        <input value={searchData} onChange={(e)=>setSearchData(e.target.value)} className=" lg:w-[80%]  px-2 outline-none border-none bg-white" type="text" placeholder="Search" />
                      </div>
                      <div className="dropdown w-[40%] cursor-pointer hidden lg:block ">
                        <p>Select Catagory</p>
                      </div>
-                     <div className="w-[20%] cursor-pointer py-2 text-center font-MainFont font-semibold bg-[#ffbb38]">
+                     <div onClick={searcHandeler} className="w-[20%] cursor-pointer py-2 text-center font-MainFont font-semibold bg-[#ffbb38]">
                         <button className=" font-sans">Search</button>
                      </div>
                     

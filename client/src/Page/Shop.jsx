@@ -81,24 +81,33 @@ function Shop() {
     // recive difrent catagory data end
 
 
+    const {name} = useParams(null)
     const {id} = useParams()
-    useEffect(()=>{
-        const incomingData = async()=>{
-          if(id){
-            setLoading(true)
-            try{
-                const response = await fetch(`https://shop-steel-ten.vercel.app/catagories/${id}`)
-                const data = await response.json()
-                setShopData(data)
-              }catch(error){
-                setLoading(false)
-                console.log(error)
-              }
-              setLoading(false)
-          }
-        }
-        incomingData()
-    },[id])
+          useEffect(()=>{
+                const incomingData = async()=>{
+                    if(id){
+                      setLoading(true)
+                      try{
+                          const response = await fetch(`https://shop-steel-ten.vercel.app/catagories/${id}`)
+                          const data = await response.json()
+                          setShopData(data)
+                        }catch(error){
+                          setLoading(false)
+                          console.log(error)
+                        }
+                        setLoading(false)
+                        console.log(id)
+                    }else{
+                        const response = await fetch(`http://localhost:3000/search-filter/${name}`)
+                        const data = await response.json()
+                        console.log("dsata",data)
+                        .then(res=>res.json)
+                        .then(res=>console.log(res))
+                       
+                    }
+                  }
+                  incomingData()
+          },[id,name])
 
 
     // add cart are start
@@ -146,7 +155,7 @@ function Shop() {
 }, [priceRange]);
 
     // price range area end
-    console.log(shopData)
+
   return (
     <div>
         <div className="all-content mx-8 flex my-4 gap-2">
@@ -220,7 +229,6 @@ function Shop() {
                      {
                         shopData.map((item)=>{
                           const existCart = cartData.find((cart)=>cart?.id === item?._id )
-                          console.log("exist",existCart)
                          return(  
                          <div key={item._id} className="all-c0ntent bg-white relative overflow-hidden group" >
                                 <Link to={`/product/${item?._id}`} className="image">

@@ -66,7 +66,7 @@ function NewArrival() {
                       <Commet color="#32cd32" size="medium" text="" textColor="" />
                   </div>
                  :
-                 <div className="all-content gap-2 grid grid-cols-1  md:grid-cols-4 lg:grid-cols-4">
+                 <div className="all-content gap-2 grid grid-cols-1 flex-1  md:grid-cols-4 lg:grid-cols-4">
                   {
                     arraval.map((item)=>{
                        const exitData =cartData.find((state)=>state?.id === item?._id )

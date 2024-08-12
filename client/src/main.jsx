@@ -29,6 +29,7 @@ import PamentCancel from './Page/Cancel';
 
 
 
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -41,6 +42,10 @@ const router = createBrowserRouter([
           {
             path:"Shop",
             element:<Shop/>
+         },
+         {
+          path:"search/:name",
+          element:<Shop/>
          },
          {
           path:"pament-success",

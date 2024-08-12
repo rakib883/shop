@@ -32,15 +32,19 @@ const CartProduct = () => {
 
   console.log(cartData)
     // proced handeler start
+    const checkOut = {
+        cartData:cartData,
+        userData:userData
+    }
     const procedHandeler = async()=>{
         try{
             const stripe = await loadStripe("pk_test_51PWscOL3BkBJk9RpVuFlO4f7SrTvDNHnFCVae0x6buv1S703qEvd3iEnDfqVQU9Iz1z6WDhV3M8IfhS1Za0O8v1z00UzkBSn5i")
-            const response = await fetch("https://shop-steel-ten.vercel.app/proced-checkout",{
+            const response = await fetch("http://localhost:3000/proced-checkout",{
                 method:"POST",
                 headers:{
                     "Content-Type" : "application/json",
                 },
-                body:JSON.stringify(cartData)
+                body:JSON.stringify(checkOut)
             })
 
             const session = await response.json()
